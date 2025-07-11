@@ -1,0 +1,258 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beranda - Zuan Hosting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0f172a;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1e293b;
+      padding: 16px 20px;
+      border-bottom: 2px solid #334155;
+    }
+    .brand {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .menu-toggle {
+      font-size: 28px;
+      cursor: pointer;
+    }
+    .dropdown {
+      display: none;
+      flex-direction: column;
+      background-color: #1e293b;
+      padding: 10px;
+    }
+    .dropdown a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .dropdown a:hover {
+      background-color: #3b82f6;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+    .welcome {
+      background-color: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .welcome img {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+    .slideshow {
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .slideshow img {
+      width: 100%;
+      border-radius: 12px;
+      animation: fadeSlide 15s infinite;
+    }
+    .marquee {
+      background-color: #1e40af;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .marquee p {
+      white-space: nowrap;
+      overflow: hidden;
+      animation: marquee 15s linear infinite;
+    }
+    .highlight-box {
+      background: linear-gradient(to right, #2563eb, #3b82f6);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+      animation: pulse 2s infinite;
+    }
+    .status-box {
+      background-color: #0ea5e9;
+      color: #0f172a;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .testimoni {
+      background-color: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .testimoni p {
+      font-style: italic;
+      color: #cbd5e1;
+    }
+    .paket-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .paket {
+      background-color: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px rgba(59,130,246,0.2);
+    }
+    .paket:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(59,130,246,0.4);
+    }
+    .paket h2 {
+      color: #3b82f6;
+    }
+    .paket p {
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+    .paket .harga {
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      margin: 12px 0;
+    }
+    .paket button {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .paket button:hover {
+      background-color: #2563eb;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeSlide {
+      0%, 100% {opacity: 0;}
+      10%, 90% {opacity: 1;}
+    }
+    @keyframes marquee {
+      0% {transform: translateX(100%);}
+      100% {transform: translateX(-100%);}
+    }
+    @keyframes pulse {
+      0%, 100% {transform: scale(1);}
+      50% {transform: scale(1.02);}
+    }
+  </style>
+</head>
+<body onload="initDashboard()">
+  <div class="top-bar">
+    <div class="brand">Zuan Hosting</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </div>
+  <div id="dropdownMenu" class="dropdown">
+  <a href="dashboard.html">🏠 Beranda</a>
+  <a href="panelmenu.html">🛒 Buat Pesanan</a>
+  <a href="vps.html">💻 Paket VPS</a> <!-- Tambahan -->
+  <a href="suntikTiktok.html">📱Suntik Tiktok</a>
+  <a href="status.html">📄 Status Pesanan</a>
+ 
+  <a href="#" onclick="logout()">🔐 Logout</a>
+</div>
+  <div class="container">
+    <div class="welcome">
+      <img src="https://cdn-icons-png.flaticon.com/512/219/219970.png" alt="User Icon">
+      <h2>Halo, <span id="username">User</span> 👋</h2>
+      <p>Selamat datang di Zuan Hosting! Solusi terbaik untuk hosting murah, cepat, dan andal.</p>
+    </div>
+    <div class="slideshow">
+      <img src="https://via.placeholder.com/1000x250?text=Promo+Spesial+Hosting+Zuan" alt="Promo 1">
+    </div>
+    <div class="marquee">
+      <p>🔥 Promo: Beli Paket Ultimate gratis 1 bulan! | 🎁 Cashback 5K untuk pengguna baru! | 🚀 Support 24 Jam via WhatsApp!</p>
+    </div>
+    <div class="highlight-box">
+      <h3>🌟 Hosting Cepat, Aman, dan Terjangkau Mulai dari Rp 5.000/Bulan!</h3>
+    </div>
+    <div class="status-box" id="statusBox">
+      Status pesanan terakhir: <span id="lastStatus">Belum ada</span>
+    </div>
+    <div class="testimoni">
+      <h3>❤️ Testimoni Pengguna</h3>
+      <p>"Hosting murah tapi ngebut! Zuan Hosting emang mantap!" - @andrewebdev</p>
+      <p>"Customer service-nya fast respon dan ramah!" - @lutfihosting</p>
+    </div>
+    <h2 id="paketList">🎯 Pilih Paket Hosting</h2>
+    <div class="paket-list">
+      <div class="paket">
+        <h2>Paket Hemat</h2>
+        <p>Untuk pemula dan pelajar belajar hosting.</p>
+        <p class="harga">Rp 5.000 / bulan</p>
+        <p>✅ 1GB SSD<br>✅ 1 Website Aktif<br>✅ SSL Gratis<br>✅ 7 Hari Uang Kembali</p>
+        <button onclick="beli('Hemat')">Beli Sekarang</button>
+      </div>
+      <div class="paket">
+        <h2>Paket Pro</h2>
+        <p>Untuk developer aktif dan UMKM.</p>
+        <p class="harga">Rp 15.000 / bulan</p>
+        <p>✅ 5GB SSD<br>✅ 5 Website<br>✅ Backup Mingguan<br>✅ 14 Hari Uang Kembali</p>
+        <button onclick="beli('Pro')">Beli Sekarang</button>
+      </div>
+      <div class="paket">
+        <h2>Paket Ultimate</h2>
+        <p>Untuk bisnis dan trafik besar.</p>
+        <p class="harga">Rp 30.000 / bulan</p>
+        <p>✅ 10GB SSD<br>✅ Unlimited Website<br>✅ Backup Harian<br>✅ 30 Hari Uang Kembali</p>
+        <button onclick="beli('Ultimate')">Beli Sekarang</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+    function initDashboard() {
+      const nama = localStorage.getItem('username') || 'User';
+      const status = localStorage.getItem('statusPesanan') || 'Belum ada';
+      document.getElementById("username").textContent = nama;
+      document.getElementById("lastStatus").textContent = status;
+      if (localStorage.getItem('loggedIn') !== 'true') {
+        alert('Silakan login terlebih dahulu!');
+        window.location.href = 'login.html';
+      }
+    }
+    function beli(paket) {
+      localStorage.setItem('paketDipilih', paket);
+      window.location.href = 'metode.html';
+    }
+    function logout() {
+      localStorage.clear();
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>

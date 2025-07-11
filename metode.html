@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pembayaran - Zuan Hosting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0f172a;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      padding: 0;
+      margin: 0;
+    }
+
+    .header {
+      background-color: #1e293b;
+      padding: 30px 20px 10px;
+      text-align: center;
+      border-bottom: 1px solid #334155;
+    }
+
+    .header img {
+      max-width: 100px;
+      margin-bottom: 10px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .box {
+      background-color: #1e293b;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 600px;
+      margin: 30px auto;
+      box-shadow: 0 0 20px rgba(59,130,246,0.2);
+      text-align: center;
+    }
+
+    .metode-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .metode-btn {
+      background-color: #334155;
+      color: white;
+      border: 2px solid transparent;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .metode-btn.active {
+      background-color: #3b82f6;
+      border-color: #60a5fa;
+    }
+
+    .metode-img {
+      width: 240px;
+      margin-top: 20px;
+      border-radius: 12px;
+      border: 2px solid #3b82f6;
+      transition: transform 0.3s ease;
+    }
+
+    .metode-img:hover {
+      transform: scale(1.05);
+    }
+
+    input[type="file"] {
+      margin-top: 20px;
+      background-color: #1e293b;
+      border: 1px solid #3b82f6;
+      padding: 10px;
+      border-radius: 8px;
+      color: white;
+    }
+
+    button.confirm {
+      background-color: #22c55e;
+      border: none;
+      padding: 12px 24px;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button.confirm:hover {
+      background-color: #16a34a;
+    }
+
+    .status {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 10px;
+      background-color: #0ea5e9;
+      color: #0f172a;
+      display: none;
+      font-weight: bold;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .menu {
+      text-align: left;
+      margin-top: 30px;
+    }
+
+    .menu p {
+      cursor: pointer;
+      margin: 5px 0;
+      background: #334155;
+      padding: 10px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .menu p:hover {
+      background: #3b82f6;
+    }
+  </style>
+</head>
+<body onload="loadPaket()">
+  <div class="header">
+    <img src="https://cdn-icons-png.flaticon.com/512/7776/7776769.png" alt="Bayar" />
+    <h2>Pembayaran Zuan Hosting</h2>
+  </div>
+
+  <div class="box">
+    <p id="paketText">Paket: </p>
+
+    <div class="metode-container">
+      <button class="metode-btn active" onclick="gantiMetode('qris')">QRIS</button>
+      <button class="metode-btn" onclick="gantiMetode('dana')">DANA</button>
+      <button class="metode-btn" onclick="gantiMetode('gopay')">Gopay</button>
+    </div>
+
+    <img id="imgMetode" src="qris-contoh.jpg" class="metode-img" alt="Metode Pembayaran" />
+
+    <input type="file" id="buktiInput" />
+    <button class="confirm" onclick="konfirmasiBayar()">Kirim Bukti Transfer</button>
+
+    <div id="statusBox" class="status">⏳ Menunggu bukti transfer...</div>
+
+    <div class="menu">
+      <h3>☰ Menu</h3>
+      <p onclick="buatPesanan()">📦 Buat Pesanan Baru</p>
+      <p onclick="cekStatus()">🔍 Cek Status Pesanan</p>
+    </div>
+  </div>
+
+  <script>
+    let metode = "qris";
+
+    function loadPaket() {
+      const paket = localStorage.getItem('paketDipilih') || 'Hemat';
+      document.getElementById('paketText').textContent = "Paket: " + paket;
+    }
+
+    function gantiMetode(nama) {
+      metode = nama;
+      document.querySelectorAll('.metode-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const gambar = {
+        qris: "qris-contoh.jpg",
+        dana: "dana.jpg",
+        gopay: "gopay.jpg"
+      };
+      document.getElementById('imgMetode').src = gambar[nama] || "qris-contoh.jpg";
+    }
+
+    function konfirmasiBayar() {
+      const bukti = document.getElementById("buktiInput").files[0];
+      const statusBox = document.getElementById("statusBox");
+      const paket = localStorage.getItem("paketDipilih") || "Hemat";
+
+      if (!bukti) {
+        alert("Silakan unggah bukti transfer terlebih dahulu.");
+        return;
+      }
+
+      localStorage.setItem("statusPesanan", "pending");
+      statusBox.textContent = "⏳ Menunggu bukti transfer...";
+      statusBox.style.display = "block";
+
+      setTimeout(() => {
+        statusBox.textContent = "✅ Bukti siap dikirim ke Admin via WhatsApp.";
+        const pesan = encodeURIComponent(
+          `Halo Admin, saya sudah bayar via *${metode.toUpperCase()}* untuk paket *${paket}*. Saya kirim bukti transfernya (gambar) berikut ini.`
+        );
+        window.location.href = `https://wa.me/6285262983638?text=${pesan}`;
+      }, 2000);
+    }
+
+    function buatPesanan() {
+      window.location.href = "dashboard.html";
+    }
+
+    function cekStatus() {
+      window.location.href = "status.html";
+    }
+  </script>
+</body>
+</html>

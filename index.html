@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beranda - Zuan Hosting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #0f172a, #1e293b);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #1e293b;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      margin: 0;
+      color: #3b82f6;
+    }
+
+    .container {
+      padding: 30px 20px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .welcome {
+      margin-bottom: 30px;
+      font-size: 18px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .menu button {
+      background-color: #334155;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .menu button:hover {
+      background-color: #3b82f6;
+    }
+
+    .logout {
+      margin-top: 30px;
+      background-color: #ef4444;
+    }
+
+    .logout:hover {
+      background-color: #dc2626;
+    }
+  </style>
+</head>
+<body onload="cekLogin()">
+  <header>
+    <h1>Zuan Hosting</h1>
+  </header>
+
+  <div class="container">
+    <div class="welcome" id="welcomeText">Halo, Guest</div>
+    <div class="menu">
+      <button onclick="window.location.href='panelmenu.html'">📦 Buat Pesanan</button>
+      <button onclick="window.location.href='suntik tiktok.html'">📱 Suntik TikTok</button>
+      <button onclick="window.location.href='vps.html'">💻 Paket VPS</button>
+      <button onclick="window.location.href='status.html'">📄 Status Pesanan</button>
+      <button class="logout" onclick="logout()">🚪 Logout</button>
+    </div>
+  </div>
+
+  <script>
+    function cekLogin() {
+      const loggedIn = localStorage.getItem('loggedIn');
+      const nama = localStorage.getItem('username') || 'Guest';
+      if (loggedIn !== 'true') {
+        alert("Silakan login dulu!");
+        window.location.href = "login.html";
+        return;
+      }
+      document.getElementById("welcomeText").textContent = `Halo, ${nama}`;
+    }
+
+    function logout() {
+      if (confirm("Yakin mau logout?")) {
+        localStorage.removeItem('loggedIn');
+        localStorage.removeItem('username');
+        window.location.href = "login.html";
+      }
+    }
+  </script>
+</body>
+</html>

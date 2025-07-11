@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Status Pesanan - Zuan Hosting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f172a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    .box {
+      background-color: #1e293b;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 20px #3b82f633;
+    }
+
+    .status-icon {
+      width: 100px;
+      height: 100px;
+      margin: 20px auto;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .status-text {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    .status-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: #22c55e;
+      margin-top: 5px;
+    }
+
+    .paket-info {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #60a5fa;
+    }
+
+    .back-btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #3b82f6;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+<body onload="loadStatus()">
+  <div class="box">
+    <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Status Icon" class="status-icon" />
+
+    <div class="status-text">Status pesanan kamu:</div>
+    <div id="statusValue" class="status-value">Loading...</div>
+
+    <div id="paketInfo" class="paket-info"></div>
+
+    <button class="back-btn" onclick="window.location.href='dashboard.html'">← Kembali ke Beranda</button>
+  </div>
+
+  <script>
+    function loadStatus() {
+      const status = localStorage.getItem("statusPesanan") || "Belum ada";
+      const paket = localStorage.getItem("paketDipilih") || "Belum memilih paket";
+
+      document.getElementById("statusValue").textContent = status.charAt(0).toUpperCase() + status.slice(1);
+      document.getElementById("paketInfo").textContent = `Paket: ${paket}`;
+    }
+  </script>
+</body>
+</html>

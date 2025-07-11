@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paket VPS - Zuan Hosting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #0f172a;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .title h2 {
+      font-size: 28px;
+      color: #3b82f6;
+    }
+    .vps-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .vps-box {
+      background-color: #1e293b;
+      padding: 20px;
+      border-radius: 16px;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px rgba(59,130,246,0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .vps-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(59,130,246,0.4);
+    }
+    .vps-box img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 0 3px #3b82f6aa);
+    }
+    .vps-box h3 {
+      color: #60a5fa;
+      margin-bottom: 10px;
+    }
+    .vps-box p {
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+    }
+    .vps-box .harga {
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      margin: 16px 0;
+    }
+    .vps-box button {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .vps-box button:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">
+    <h2>🚀 Pilih Paket VPS Terbaik Untukmu</h2>
+    <p>Performa tinggi, uptime stabil, dan siap pakai!</p>
+  </div>
+
+  <div class="vps-list">
+    <div class="vps-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/4149/4149694.png" alt="VPS Mini">
+      <h3>VPS Mini</h3>
+      <p>1 vCPU, 1GB RAM</p>
+      <p>10GB SSD, Bandwidth 1TB</p>
+      <p class="harga">Rp 20.000 / bulan</p>
+      <button onclick="pesan('VPS Mini')">Pesan Sekarang</button>
+    </div>
+
+    <div class="vps-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/2666/2666507.png" alt="VPS Standard">
+      <h3>VPS Standard</h3>
+      <p>2 vCPU, 2GB RAM</p>
+      <p>20GB SSD, Bandwidth 2TB</p>
+      <p class="harga">Rp 40.000 / bulan</p>
+      <button onclick="pesan('VPS Standard')">Pesan Sekarang</button>
+    </div>
+
+    <div class="vps-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/5883/5883571.png" alt="VPS Pro">
+      <h3>VPS Pro</h3>
+      <p>4 vCPU, 4GB RAM</p>
+      <p>50GB SSD, Bandwidth Unlimited</p>
+      <p class="harga">Rp 75.000 / bulan</p>
+      <button onclick="pesan('VPS Pro')">Pesan Sekarang</button>
+    </div>
+  </div>
+
+  <script>
+    function pesan(paket) {
+      localStorage.setItem('paketDipilih', paket);
+      window.location.href = 'metode.html';
+    }
+  </script>
+</body>
+</html>
