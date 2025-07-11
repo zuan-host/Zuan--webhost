@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beranda - Zuan Hosting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #0f172a, #1e293b);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #1e293b;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      margin: 0;
+      color: #3b82f6;
+    }
+
+    .container {
+      padding: 30px 20px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      animation: fadeSlide 1s ease-out;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .welcome {
+      margin-bottom: 30px;
+      font-size: 18px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #3b82f6; }
+      to { text-shadow: 0 0 15px #60a5fa; }
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .menu button {
+      background-color: #334155;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .menu button:hover {
+      background-color: #3b82f6;
+      box-shadow: 0 0 15px #3b82f688;
+      transform: scale(1.03);
+    }
+
+    .logout {
+      margin-top: 30px;
+      background-color: #ef4444;
+    }
+
+    .logout:hover {
+      background-color: #dc2626;
+    }
+
+    .kilua {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 130px;
+      animation: float 3s ease-in-out infinite;
+      pointer-events: none;
+      opacity: 0.85;
+      z-index: 10;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body onload="cekLogin()">
+  <header>
+    <h1>Zuan Hosting</h1>
+  </header>
+
+  <div class="container">
+    <div class="welcome" id="welcomeText">Halo, Guest</div>
+    <div class="menu">
+      <button onclick="window.location.href='panelmenu.html'">📦 Buat Pesanan</button>
+      <button onclick="window.location.href='suntik tiktok.html'">📱 Suntik TikTok</button>
+      <button onclick="window.location.href='vps.html'">💻 Paket VPS</button>
+      <button onclick="window.location.href='nokos.html'">📄 Beli Nomor Kosong</button>
+      <button onclick="window.location.href='status.html'">🔍 Status Pesanan</button>
+      <button class="logout" onclick="logout()">🚪 Logout</button>
+    </div>
+  </div>
+
+  <img class="kilua" src="https://files.catbox.moe/n8d23a.png" alt="Maskot Killua">
+
+  <script>
+    function cekLogin() {
+      const loggedIn = localStorage.getItem('loggedIn');
+      const nama = localStorage.getItem('username') || 'Guest';
+      if (loggedIn !== 'true') {
+        alert("Silakan login dulu!");
+        window.location.href = "login.html";
+        return;
+      }
+      document.getElementById("welcomeText").textContent = `Halo, ${nama}`;
+    }
+
+    function logout() {
+      if (confirm("Yakin mau logout?")) {
+        localStorage.removeItem('loggedIn');
+        localStorage.removeItem('username');
+        window.location.href = "login.html";
+      }
+    }
+  </script>
+</body>
+</html>
