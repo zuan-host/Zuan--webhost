@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paket VPS - Zuan Hosting</title>
+  <meta name="description" content="Paket VPS murah dan cepat dari Zuan Hosting. Mulai dari Rp 20.000 dengan spesifikasi tinggi dan garansi uptime terbaik.">
+  <meta name="keywords" content="VPS murah, hosting, paket VPS, server cepat, zuan hosting">
+  <meta property="og:title" content="Paket VPS - Zuan Hosting">
+  <meta property="og:description" content="Dapatkan VPS murah, cepat, dan stabil dari Zuan Hosting. Paket lengkap mulai dari Rp 20.000.">
+  <meta property="og:image" content="https://cdn.pixabay.com/photo/2020/07/24/13/42/web-hosting-5431593_1280.jpg">
+  <meta name="theme-color" content="#0f172a"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      background: linear-gradient(120deg, #0f172a, #1e293b);
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+    .title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .title h2 {
+      font-size: 32px;
+      color: #3b82f6;
+      margin-bottom: 5px;
+    }
+    .title p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+    .vps-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .vps-box {
+      backdrop-filter: blur(12px);
+      background-color: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(59,130,246,0.15);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .vps-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 30px rgba(59,130,246,0.3);
+    }
+    .vps-box h3 {
+      color: #60a5fa;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+    .vps-box p {
+      color: #cbd5e1;
+      font-size: 13px;
+      margin: 5px 0;
+    }
+    .harga {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 12px 0;
+      color: #fff;
+    }
+    .vps-box button {
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .vps-box button:hover {
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      box-shadow: 0 0 10px #3b82f655;
+    }
+    .benefit {
+      max-width: 700px;
+      margin: 50px auto 0;
+      padding: 25px;
+      background: rgba(30,41,59,0.7);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(59,130,246,0.2);
+      box-shadow: 0 0 20px rgba(59,130,246,0.15);
+    }
+    .benefit h4 {
+      text-align: center;
+      color: #3b82f6;
+      margin-bottom: 20px;
+    }
+    .benefit ul {
+      list-style: none;
+      padding: 0;
+      line-height: 1.8;
+    }
+    .benefit ul li::before {
+      content: "⚡ ";
+      color: #22c55e;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">
+    <h2>🚀 Paket VPS by Zuan Hosting</h2>
+    <p>Performa tinggi, garansi aman & langsung ready!</p>
+  </div>  <div class="vps-list">
+    <div class="vps-box">
+      <h3>RAM 4GB • CORE 2</h3>
+      <p>Free Install & Panel</p>
+      <p class="harga">Rp 20.000</p>
+      <button onclick="pesan('RAM 4GB CORE 2')">Pesan Sekarang</button>
+    </div><div class="vps-box">
+  <h3>RAM 8GB • CORE 4</h3>
+  <p>Performa tinggi</p>
+  <p class="harga">Rp 25.000</p>
+  <button onclick="pesan('RAM 8GB CORE 4')">Pesan Sekarang</button>
+</div>
+
+<div class="vps-box">
+  <h3>RAM 16GB • CORE 4</h3>
+  <p>Free Egg Node.js</p>
+  <p class="harga">Rp 30.000</p>
+  <button onclick="pesan('RAM 16GB CORE 4')">Pesan Sekarang</button>
+</div>
+
+<div class="vps-box">
+  <h3>RAM 16GB • CORE 8</h3>
+  <p>Free Theme</p>
+  <p class="harga">Rp 35.000</p>
+  <button onclick="pesan('RAM 16GB CORE 8')">Pesan Sekarang</button>
+</div>
+
+<div class="vps-box">
+  <h3>RAM 32GB • CORE 8</h3>
+  <p>Full akses server</p>
+  <p class="harga">Rp 45.000</p>
+  <button onclick="pesan('RAM 32GB CORE 8')">Pesan Sekarang</button>
+</div>
+
+  </div>  <div class="benefit">
+    <h4>🎁 Benefit VPS:</h4>
+    <ul>
+      <li>Free Request OS / Versi</li>
+      <li>Free Install Panel & Node</li>
+      <li>Free Link Login & Egg Node.js</li>
+      <li>Free Install Theme (min. RAM 4GB)</li>
+      <li>Terima Beres Tanpa Ribet</li>
+      <li>Server 100% milikmu</li>
+      <li>Masa Aktif 30 Hari + Garansi 15 Hari</li>
+    </ul>
+  </div>  <script>
+    function pesan(paket) {
+      localStorage.setItem('paketDipilih', paket);
+      window.location.href = 'metode.html';
+    }
+  </script></body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Hosting & Admin - Zuan Hosting</title>
+  <meta name="description" content="Pesan berbagai paket panel hosting dan akses admin di Zuan Hosting. Mulai dari panel murah hingga admin panel tanpa batas.">
+  <meta name="keywords" content="Panel Hosting, Admin Panel, Reseller Panel, Zuan Hosting">
+  <meta name="author" content="Zuan Hosting Team">
+  <meta property="og:title" content="Panel Hosting & Admin - Zuan Hosting">
+  <meta property="og:description" content="Pilih paket panel hosting, reseller, atau admin panel sesuai kebutuhanmu. Harga terjangkau, fitur melimpah!">
+  <meta property="og:image" content="https://files.catbox.moe/n8d23a.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #0f172a, #1e293b);
+      color: white;
+    }
+    .top-bar {
+      background-color: #1e293b;
+      padding: 16px 20px;
+      border-bottom: 2px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      font-size: 20px;
+      font-weight: bold;
+      color: #3b82f6;
+    }
+    .back-btn {
+      background-color: #3b82f6;
+      padding: 8px 16px;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #60a5fa;
+    }
+    .paket-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+    .paket {
+      background-color: #1e293b;
+      border-radius: 16px;
+      padding: 20px;
+      transition: 0.3s ease;
+      box-shadow: 0 0 12px rgba(59,130,246,0.2);
+      text-align: center;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+    }
+    .paket:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px rgba(59,130,246,0.4);
+    }
+    .paket h3 {
+      margin-bottom: 10px;
+      color: #3b82f6;
+    }
+    .paket p {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    .harga {
+      font-size: 18px;
+      font-weight: bold;
+      color: #22c55e;
+      margin: 15px 0;
+    }
+    .paket button {
+      background-color: #3b82f6;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .paket button:hover {
+      background-color: #2563eb;
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body onload="cekLogin()">
+  <div class="top-bar">
+    <div class="brand">Zuan Hosting</div>
+    <button class="back-btn" onclick="window.location.href='dashboard.html'">← Kembali</button>
+  </div>
+
+  <div class="container">
+    <h2 class="section-title">📦 Panel Hosting & Admin</h2>
+    <div class="paket-list">
+      <div class="paket">
+        <h3>Panel 500P</h3>
+        <p>Panel dengan 4GB RAM</p>
+        <div class="harga">Rp 500</div>
+        <button onclick="pesan('Panel 500P - 4GB')">Pesan</button>
+      </div>
+      <div class="paket">
+        <h3>Panel 1K</h3>
+        <p>Panel dengan 5GB RAM</p>
+        <div class="harga">Rp 1.000</div>
+        <button onclick="pesan('Panel 1K - 5GB')">Pesan</button>
+      </div>
+      <div class="paket">
+        <h3>Panel 2K</h3>
+        <p>Panel dengan 6GB RAM</p>
+        <div class="harga">Rp 2.000</div>
+        <button onclick="pesan('Panel 2K - 6GB')">Pesan</button>
+      </div>
+      <div class="paket">
+        <h3>Panel 3K</h3>
+        <p>Panel dengan 7GB RAM</p>
+        <div class="harga">Rp 3.000</div>
+        <button onclick="pesan('Panel 3K - 7GB')">Pesan</button>
+      </div>
+      <div class="paket">
+        <h3>Panel 4K</h3>
+        <p>Panel dengan 10GB RAM</p>
+        <div class="harga">Rp 4.000</div>
+        <button onclick="pesan('Panel 4K - 10GB')">Pesan</button>
+      </div>
+      <div class="paket">
+        <h3>Panel 5K</h3>
+        <p>Panel Unlimited (UNLI)</p>
+        <div class="harga">Rp 5.000</div>
+        <button onclick="pesan('Panel 5K - UNLI')">Pesan</button>
+      </div>
+      <div class="paket">
+        <h3>Reseller Publik</h3>
+        <p>Bisa jual panel sepuasnya</p>
+        <div class="harga">Rp 7.000</div>
+        <button onclick="pesan('Reseller Publik')">Pesan</button>
+      </div>
+      <div class="paket">
+        <h3>Reseller Private</h3>
+        <p>Bisa buat panel & jual bebas</p>
+        <div class="harga">Rp 10.000</div>
+        <button onclick="pesan('Reseller Private')">Pesan</button>
+      </div>
+      <div class="paket">
+        <h3>Admin Panel</h3>
+        <p>✅ Buat panel UNLI<br>✅ Jual reseller & panel bebas</p>
+        <div class="harga">Rp 15.000</div>
+        <button onclick="pesan('Admin Panel')">Pesan</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function cekLogin() {
+      if (localStorage.getItem('loggedIn') !== 'true') {
+        alert('Silakan login terlebih dahulu!');
+        window.location.href = 'login.html';
+      }
+    }
+    function pesan(paket) {
+      localStorage.setItem('paketDipilih', paket);
+      window.location.href = 'metode.html';
+    }
+  </script>
+</body>
+</html>

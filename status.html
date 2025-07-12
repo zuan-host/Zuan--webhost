@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Status Pesanan - Zuan Hosting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #0f172a, #1e293b);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(30, 41, 59, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 30px 25px;
+      max-width: 450px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(59,130,246,0.3);
+      text-align: center;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #60a5fa;
+      margin-bottom: 20px;
+    }
+
+    .status {
+      font-size: 18px;
+      font-weight: bold;
+      padding: 12px;
+      border-radius: 10px;
+      margin: 15px auto;
+      width: fit-content;
+      animation: pulse 2s infinite;
+    }
+
+    .waiting { background: #fbbf24; color: #1e293b; }
+    .pending { background: #3b82f6; color: #f1f5f9; }
+    .done    { background: #22c55e; color: white; }
+    .failed  { background: #ef4444; color: white; }
+
+    .back-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: #3b82f6;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #2563eb;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+  </style>
+</head>
+<body onload="loadStatus()">
+  <div class="card">
+    <h2>📄 Status Pesanan Anda</h2>
+    <div id="statusLabel" class="status waiting">Memuat...</div>
+    <button class="back-btn" onclick="window.location.href='dashboard.html'">← Kembali ke Dashboard</button>
+  </div>
+
+  <script>
+    function loadStatus() {
+      const status = (localStorage.getItem('statusPesanan') || "waiting").toLowerCase();
+      const label = document.getElementById("statusLabel");
+
+      let statusText = "⏳ Menunggu Verifikasi";
+      label.className = "status waiting";
+
+      if (status === "pending") {
+        statusText = "🔄 Pesanan dalam proses";
+        label.className = "status pending";
+      } else if (status === "done") {
+        statusText = "✅ Pesanan Selesai & Dikirim";
+        label.className = "status done";
+      } else if (status === "failed") {
+        statusText = "❌ Gagal / Tidak Valid";
+        label.className = "status failed";
+      }
+
+      label.textContent = statusText;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suntik TikTok - Zuan Hosting</title>
+  <meta name="description" content="Layanan suntik followers, likes, dan views TikTok murah dan cepat dari Zuan Hosting.">
+  <meta name="keywords" content="Suntik TikTok, Followers TikTok, Likes TikTok, Views TikTok, Zuan Hosting">
+  <meta name="author" content="Zuan Hosting">
+  <meta property="og:title" content="Suntik TikTok - Zuan Hosting">
+  <meta property="og:description" content="Layanan suntik followers, likes, dan views TikTok murah dan cepat dari Zuan Hosting.">
+  <meta property="og:image" content="https://files.catbox.moe/n8d23a.png">
+  <meta property="og:type" content="website">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #0f172a, #1e293b);
+      color: white;
+      overflow-x: hidden;
+    }.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.left { flex: 1 1 400px; }
+.right {
+  flex: 1 1 300px;
+  text-align: center;
+  position: relative;
+}
+
+.hisoka {
+  width: 100%;
+  max-width: 300px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px #a855f7);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.card {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 0 12px rgba(59,130,246,0.3);
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #3b82f6;
+}
+
+.switcher button {
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background-color: #334155;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.switcher button.active, .switcher button:hover {
+  background-color: #3b82f6;
+  box-shadow: 0 0 10px #3b82f688;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.form-input input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #1e293b;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.form-input input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #3b82f677;
+}
+
+.form-input input::placeholder {
+  color: #94a3b8;
+}
+
+.price {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.submit-btn {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #16a34a;
+  box-shadow: 0 0 12px #22c55e88;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <div class="card">
+        <h3>🧪 Pilih Jenis Suntik TikTok</h3>
+        <div class="switcher">
+          <button class="active" onclick="switchType('followers')">Suntik Followers</button>
+          <button onclick="switchType('likes')">Suntik Likes</button>
+          <button onclick="switchType('views')">Suntik Views</button>
+        </div><div class="form-input">
+      <input type="text" id="username" placeholder="Username TikTok (tanpa @)">
+      <input type="number" id="jumlah" placeholder="Jumlah (minimal 30)" min="30">
+      <div class="price" id="priceText">Harga: Rp 0</div>
+      <button class="submit-btn" onclick="bayar()">Bayar Sekarang</button>
+    </div>
+  </div>
+</div>
+
+<div class="right">
+  <img class="hisoka" src="https://files.catbox.moe/n8d23a.png" alt="Hisoka">
+  <p style="margin-top:10px; color: #a855f7;">“Jangan takut, biar aku suntik auramu…” – Hisoka</p>
+</div>
+
+  </div>  <script>
+    let tipe = "followers";
+
+    function switchType(t) {
+      tipe = t;
+      document.querySelectorAll('.switcher button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      updatePrice();
+    }
+
+    document.getElementById("jumlah").addEventListener("input", updatePrice);
+
+    function updatePrice() {
+      const jumlah = parseInt(document.getElementById("jumlah").value) || 0;
+      const hargaPerUnit = 35;
+      const harga = jumlah * hargaPerUnit;
+      document.getElementById("priceText").textContent = `Harga: Rp ${harga.toLocaleString('id-ID')}`;
+    }
+
+    function bayar() {
+      const username = document.getElementById("username").value.trim();
+      const jumlah = parseInt(document.getElementById("jumlah").value);
+
+      if (!username.match(/^[a-zA-Z0-9_.]{3,}$/)) {
+        alert("Username TikTok tidak valid.");
+        return;
+      }
+
+      if (!jumlah || jumlah < 30) {
+        alert("Jumlah minimal 30.");
+        return;
+      }
+
+      localStorage.setItem('paketDipilih', `${jumlah} ${tipe} untuk ${username}`);
+      window.location.href = 'metode.html';
+    }
+  </script></body>
+</html>

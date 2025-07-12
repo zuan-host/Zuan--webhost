@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Zuan Hosting</title>
+  <meta name="description" content="Dashboard Zuan Hosting - Kelola layanan hosting, nomor kosong, dan suntik TikTok Anda dengan mudah dan cepat.">
+  <meta name="keywords" content="Zuan Hosting, Dashboard, Hosting Murah, VPS, Suntik TikTok, Nomor Kosong, Panel Hosting">
+  <meta property="og:title" content="Dashboard - Zuan Hosting">
+  <meta property="og:description" content="Kelola semua layanan Zuan Hosting dari satu tempat. Panel yang ringan, cepat, dan modern.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://files.catbox.moe/n8d23a.png">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #0f172a, #1e293b);
+      color: white;
+      overflow-x: hidden;
+    }
+    header {
+      background: #1e293b;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    header h1 {
+      color: #3b82f6;
+      margin: 0;
+    }
+    .menu-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: #0f172a;
+      padding: 20px;
+    }
+    .menu-bar button {
+      background: #334155;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .menu-bar button:hover {
+      background-color: #3b82f6;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #3b82f688;
+    }
+    .welcome {
+      text-align: center;
+      padding: 30px 20px;
+      animation: fadeIn 1s ease;
+    }
+    .highlight {
+      text-align: center;
+      margin: 20px auto;
+      background: linear-gradient(to right, #2563eb, #3b82f6);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 700px;
+      box-shadow: 0 0 20px rgba(59,130,246,0.3);
+      animation: pulse 2s infinite;
+    }
+    .promo img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 12px;
+      margin: 20px auto;
+      display: block;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      animation: fadeSlide 10s infinite;
+    }
+    .testimoni {
+      background-color: #1e293b;
+      margin: 30px auto;
+      max-width: 700px;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    .testimoni p {
+      color: #cbd5e1;
+      font-style: italic;
+      margin: 5px;
+    }
+    .logout {
+      margin-top: 25px;
+      background-color: #ef4444 !important;
+    }
+    .logout:hover {
+      background-color: #dc2626 !important;
+    }
+    .kilua {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 120px;
+      animation: float 3s ease-in-out infinite;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlide {
+      0%, 100% {opacity: 0;}
+      10%, 90% {opacity: 1;}
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body onload="loadDashboard()">
+  <header>
+    <h1>Selamat Datang di Zuan Hosting</h1>
+  </header>
+  <div class="welcome">
+    <h2 id="username">Halo, Guest 👋</h2>
+    <p>Solusi hosting murah, cepat, dan profesional.</p>
+  </div>
+  <div class="menu-bar">
+    <button onclick="window.location.href='panelmenu.html'">📦 Buat Pesanan</button>
+    <button onclick="window.location.href='vps.html'">💻 Paket VPS</button>
+    <button onclick="window.location.href='nokos.html'">📱 Nomor Kosong</button>
+    <button onclick="window.location.href='suntikTiktok.html'">🎯 Suntik TikTok</button>
+    <button onclick="window.location.href='status.html'">📄 Status Pesanan</button>
+    <button class="logout" onclick="logout()">🚪 Logout</button>
+  </div>
+  <div class="highlight">
+    <h3>🔥 Promo Bulan Ini</h3>
+    <p>Beli Paket Ultimate ➜ Gratis 1 bulan!</p>
+  </div>
+  <div class="promo">
+    <img src="https://cdn.pixabay.com/photo/2020/07/24/13/42/web-hosting-5431593_1280.jpg" alt="Promo Hosting Modern" />
+  </div>
+  <div class="testimoni">
+    <h3>❤️ Testimoni</h3>
+    <p>"Hosting cepat & stabil. Support mantap!" - @zalpha</p>
+    <p>"Sukses suntik TikTok 1000 follower dalam sehari!" - @tiktoker</p>
+  </div>
+  <img class="kilua" src="https://files.catbox.moe/n8d23a.png" alt="Maskot Killua" />
+  <script>
+    function loadDashboard() {
+      const user = localStorage.getItem("username");
+      const loggedIn = localStorage.getItem("loggedIn");
+      if (loggedIn !== "true") {
+        document.querySelector(".menu-bar").innerHTML = `
+          <button onclick="window.location.href='login.html'">🔐 Login</button>
+          <button onclick="window.location.href='register.html'">📝 Daftar</button>
+        `;
+        document.getElementById("username").textContent = `Halo, Guest 👋`;
+        return;
+      }
+      document.getElementById("username").textContent = `Halo, ${user} 👋`;
+    }
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("username");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>
