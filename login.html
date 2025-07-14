@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Zuan Hosting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      height: 100%;
+      overflow: hidden;
+      color: white;
+    }
+
+    /* 🎬 Video Background */
+    #bgVideo {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid #3b82f644;
+      border-radius: 18px;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 0 25px rgba(59,130,246,0.3);
+      text-align: center;
+      animation: zoom 0.6s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    @keyframes zoom {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #3b82f6;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      background: #0f172a;
+      border: 1px solid #3b82f6;
+      border-radius: 10px;
+      color: white;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 12px #60a5fa;
+      background-color: #1e293b;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 12px #3b82f688;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      transform: scale(1.03);
+    }
+
+    .text-small {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .text-small a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    .text-small a:hover {
+      text-decoration: underline;
+    }
+
+    .alert {
+      background: #f87171;
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .success {
+      background: #22c55e;
+    }
+    
+    #bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+  </style>
+</head>
+<body>
+ <video autoplay muted loop playsinline id="bgVideo">
+  <source src="https://files.catbox.moe/pdjmp2.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+  <div class="card">
+    <h2>Masuk ke Zuan Hosting</h2>
+
+    <div id="alertBox" class="alert"></div>
+
+    <form onsubmit="return login(event)">
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Email" required />
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" placeholder="Password" required />
+      </div>
+      <button type="submit">🔐 Masuk Sekarang</button>
+    </form>
+
+    <div class="text-small">
+      Belum punya akun? <a href="register.html">Daftar gratis</a>
+    </div>
+  </div>
+
+  <script>
+    function showAlert(msg, isSuccess = false) {
+      const box = document.getElementById('alertBox');
+      box.textContent = msg;
+      box.style.display = 'block';
+      box.className = 'alert ' + (isSuccess ? 'success' : '');
+      setTimeout(() => box.style.display = 'none', 4000);
+    }
+
+    function login(e) {
+      e.preventDefault();
+      const savedUser = JSON.parse(localStorage.getItem('user'));
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!savedUser) {
+        showAlert("❌ Belum ada akun terdaftar. Silakan daftar terlebih dahulu.");
+        return;
+      }
+
+      if (savedUser.email === email && savedUser.password === password) {
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('username', savedUser.nama);
+        showAlert("✅ Login berhasil! Selamat datang " + savedUser.nama, true);
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 1500);
+      } else {
+        showAlert("❌ Email atau password salah.");
+      }
+    }
+  </script>
+</body>
+</html>
