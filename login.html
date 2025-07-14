@@ -16,15 +16,17 @@
       color: white;
     }
 
-    /* 🎬 Video Background */
     #bgVideo {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* ini penting biar video tetap rasio asli */
+  object-position: center;
+  z-index: -1;
+  background: black;
+      }
 
     body {
       display: flex;
